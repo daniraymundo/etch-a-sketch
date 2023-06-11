@@ -27,12 +27,12 @@ createGrid(16);
 
 resetButton.addEventListener("click", event => {
     let size = prompt("Enter a number between 2 and 100. This will be the grid size.");
-    if (size >= 2 && size <= 100) {
-        createGrid(size);
-    } else {
-        size = prompt("Invalid input. Minimum size is 2x2. Maximum size is 100x100. Enter another number.");
-        createGrid(size);
+    while (isNaN(size) || size < 2 || size > 100) {
+        size = prompt("Invalid input. Minimum size is 2x2. Maximum size is 100x100. Enter a number between 2 and 100.");
     };
+    
+    createGrid(size);
+    
     squares.forEach(square => {
         square.classList.remove("colored-black");
     })
