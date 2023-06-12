@@ -4,6 +4,7 @@ const blackButton = document.querySelector(".black");
 const rainbowButton = document.querySelector(".rainbow");
 let squares = [];
 let blackModeEnabled = false;
+let rainbowModeEnabled = false;
 
 function createGrid(size) {
     gridContainer.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -44,8 +45,36 @@ function disableBlackMode() {
     });
 };
 
+function enableRainbowMode() {
+    rainbowModeEnabled = true;
+    squares.forEach(square => {
+        let passCount = 0;
+        square.addEventListener("mouseover", event => {
+            if (rainbowModeEnabled) {
+                const red = Math.floor(Math.random() * 256);
+                const blue = Math.floor(Math.random() * 256);
+                const green = Math.floor(Math.random() * 256);
+
+                square.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+            };
+        });
+    });
+};
+
+rainbowButton.addEventListener("click", event => {
+    enableRainbowMode();
+});
+
+function disableRainbowMode() {
+    rainbowModeEnabled = false;
+    squares.forEach(square => {
+        square.removeAttribute ("style");
+    });
+};
+
 resetButton.addEventListener("click", event => {
     disableBlackMode();
+    disableRainbowMode ();
     let size = prompt("Enter a number between 2 and 100. This will be the grid size.");
     while (isNaN(size) || size < 2 || size > 100) {
         size = prompt("Invalid input. Minimum size is 2x2. Maximum size is 100x100. Enter a number between 2 and 100.");
