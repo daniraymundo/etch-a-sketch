@@ -27,7 +27,7 @@ function enableBlackMode() {
     squares.forEach(square => {
         square.addEventListener("mouseover", event => {
             if (blackModeEnabled) {
-                square.classList.add("colored-black");
+                square.style.backgroundColor = "black";
             };
         });
     });
@@ -40,10 +40,9 @@ blackButton.addEventListener("click", event => {
 function disableBlackMode() {
     blackModeEnabled = false;
     squares.forEach(square => {
-        square.classList.remove("colored-black");
+        square.removeAttribute ("style");
     });
 };
-
 
 resetButton.addEventListener("click", event => {
     disableBlackMode();
