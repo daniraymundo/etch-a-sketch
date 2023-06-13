@@ -3,6 +3,8 @@ const resetButton = document.querySelector(".reset");
 const blackButton = document.querySelector(".black");
 const rainbowButton = document.querySelector(".rainbow");
 const eraserButton = document.querySelector(".eraser");
+const inputBox = document.querySelector(".input-box")
+const inputMessage = document.querySelector(".input-message")
 let squares = [];
 let blackModeEnabled = false;
 let rainbowModeEnabled = false;
@@ -88,11 +90,17 @@ eraserButton.addEventListener("click", event => {
 resetButton.addEventListener("click", event => {
     disableBlackMode();
     disableRainbowMode();
-    let size = prompt("Enter a number between 2 and 100. This will be the grid size.");
-    while (isNaN(size) || size < 2 || size > 100) {
-        size = prompt("Invalid input. Minimum size is 2x2. Maximum size is 100x100. Enter a number between 2 and 100.");
+    createGrid(16);
+
+});
+
+inputBox.addEventListener("input", event => {
+    let size = inputBox.value;
+    if (size >= 2 && size <=100) {
+        inputMessage.textContent = `Current grid size: ${size} x ${size}`
+        createGrid(size);
+    } else {
+        inputMessage.textContent = "Invalid input. Enter a number between 2 and 100.\nGrid size has been set to default (16x16)."
+        createGrid(16);
     };
-
-    createGrid(size);
-
 });
