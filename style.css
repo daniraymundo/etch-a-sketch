@@ -28,11 +28,11 @@ body {
     display: grid;
     width: 50rem;
     height: 50rem;
-    box-shadow: 0 0 0.65px black;
+    box-shadow: 0 0 0.75px black;
 }
 
 .grid-square {
-    box-shadow: 0 0 0.65px black;
+    box-shadow: 0 0 0.75px black;
 }
 
 .input-message {
