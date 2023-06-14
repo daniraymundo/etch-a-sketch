@@ -91,13 +91,16 @@ resetButton.addEventListener("click", event => {
     disableBlackMode();
     disableRainbowMode();
     createGrid(16);
-
+    inputMessage.textContent = "Enter grid size between 2 and 100";
+    inputBox.value = "";
 });
 
 inputBox.addEventListener("input", event => {
     let size = inputBox.value;
     if (size >= 2 && size <=100) {
         inputMessage.textContent = `Current grid size: ${size} x ${size}`
+        disableBlackMode();
+        disableRainbowMode();
         createGrid(size);
     } else {
         inputMessage.textContent = "Invalid input. Enter a number between 2 and 100.\nGrid size has been set to default (16x16)."
