@@ -7,6 +7,7 @@ const inputBox = document.querySelector(".input-box")
 const inputMessage = document.querySelector(".input-message")
 let squares = [];
 let currentMode = "default";
+let gridActive = false;
 
 function createGrid(size) {
     gridContainer.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -17,7 +18,8 @@ function createGrid(size) {
     for (let i = 0; i < gridArea; i++) {
         const square = document.createElement("div");
         square.className = "grid-square";
-        square.addEventListener("mouseover",handleDraw);
+        square.addEventListener("mouseover", drawOnHover);
+        square.addEventListener("click", drawOnClick);
         gridContainer.appendChild(square);
     };
 
@@ -27,12 +29,13 @@ function createGrid(size) {
 
 createGrid(16);
 
+gridContainer.addEventListener("click", event => gridActive = !gridActive);
 
 blackButton.addEventListener("click", event => currentMode = "black");
 
 rainbowButton.addEventListener("click", event => currentMode = "rainbow");
 
-eraserButton.addEventListener ("click", event => currentMode = "eraser");
+eraserButton.addEventListener("click", event => currentMode = "eraser");
 
 resetButton.addEventListener("click", event => {
     currentMode = "default";
@@ -43,7 +46,7 @@ resetButton.addEventListener("click", event => {
 
 inputBox.addEventListener("input", event => {
     let size = inputBox.value;
-    if (size >= 2 && size <=100) {
+    if (size >= 2 && size <= 100) {
         inputMessage.textContent = `\u00A0\nCurrent grid size: ${size} x ${size}`
         createGrid(size);
     } else {
@@ -52,7 +55,23 @@ inputBox.addEventListener("input", event => {
     };
 });
 
-function handleDraw(event) {
+function drawOnHover(event) {
+    if (gridActive) {
+        if (currentMode === "black") {
+            event.target.style.backgroundColor = "black";
+        } else if (currentMode === "rainbow") {
+            const red = Math.floor(Math.random() * 256);
+            const blue = Math.floor(Math.random() * 256);
+            const green = Math.floor(Math.random() * 256);
+            event.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+        } else if (currentMode === "eraser") {
+            event.target.removeAttribute("style");
+        }
+    }
+    
+}
+
+function drawOnClick(event) {
     if (currentMode === "black") {
         event.target.style.backgroundColor = "black";
     } else if (currentMode === "rainbow") {
