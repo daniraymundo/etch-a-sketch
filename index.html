@@ -10,10 +10,12 @@
     <body>
         <div class="input-container">
             <p class="input-message">Current grid size: 16 x 16<br>Enter number between 2 and 100 to change grid size.</p>
-            <input class="input-box" type="number" min="2" max="100" placeholder="16">
+            <input id="input-box" type="number" min="2" max="100" placeholder="16">
         </div>
         <div class="button-container">
             <button class="reset">Reset</button>
+            <input id="color-picker" type="color" value="#FF0000">
+            <button class="custom">Custom Color</button>
             <button class="black">Black</button>
             <button class="rainbow">Rainbow</button>
             <button class="eraser">Eraser</button>

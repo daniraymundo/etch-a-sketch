@@ -1,12 +1,15 @@
 const gridContainer = document.querySelector(".grid-container");
 const resetButton = document.querySelector(".reset");
+const customButton = document.querySelector(".custom");
 const blackButton = document.querySelector(".black");
 const rainbowButton = document.querySelector(".rainbow");
 const eraserButton = document.querySelector(".eraser");
-const inputBox = document.querySelector(".input-box")
-const inputMessage = document.querySelector(".input-message")
+const inputBox = document.querySelector("#input-box");
+const inputMessage = document.querySelector(".input-message");
+const colorPicker = document.querySelector("#color-picker");
 let squares = [];
 let currentMode = "default";
+let selectedColor = "#FF0000";
 let gridActive = false;
 
 function createGrid(size) {
@@ -31,17 +34,22 @@ createGrid(16);
 
 gridContainer.addEventListener("click", event => gridActive = !gridActive);
 
+customButton.addEventListener("click", event => currentMode = "custom");
+
 blackButton.addEventListener("click", event => currentMode = "black");
 
 rainbowButton.addEventListener("click", event => currentMode = "rainbow");
 
 eraserButton.addEventListener("click", event => currentMode = "eraser");
 
+colorPicker.addEventListener("change", event => selectedColor = event.target.value);
+
 resetButton.addEventListener("click", event => {
     currentMode = "default";
     createGrid(16);
     inputMessage.textContent = "Current grid size: 16 x 16 \nEnter number between 2 and 100 to change grid size. ";
     inputBox.value = "";
+    colorPicker.value = "#FF0000";
 });
 
 inputBox.addEventListener("input", event => {
@@ -66,6 +74,8 @@ function drawOnHover(event) {
             event.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
         } else if (currentMode === "eraser") {
             event.target.removeAttribute("style");
+        } else if (currentMode === "custom") {
+            event.target.style.backgroundColor = selectedColor;
         }
     }
     
@@ -81,5 +91,7 @@ function drawOnClick(event) {
         event.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
     } else if (currentMode === "eraser") {
         event.target.removeAttribute("style");
+    } else if (currentMode === "custom") {
+        event.target.style.backgroundColor = selectedColor;
     }
 }
