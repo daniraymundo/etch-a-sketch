@@ -2,9 +2,9 @@ const gridContainer = document.querySelector(".grid-container");
 const resetButton = document.querySelector(".reset");
 const customButton = document.querySelector(".custom");
 const blackButton = document.querySelector(".black");
-const rainbowButton = document.querySelector(".rainbow");
+const randomButton = document.querySelector(".random");
 const eraserButton = document.querySelector(".eraser");
-const inputBox = document.querySelector("#input-box");
+const sizeSelector = document.querySelector("#size-selector");
 const inputMessage = document.querySelector(".input-message");
 const colorPicker = document.querySelector("#color-picker");
 let squares = [];
@@ -38,7 +38,7 @@ customButton.addEventListener("click", event => currentMode = "custom");
 
 blackButton.addEventListener("click", event => currentMode = "black");
 
-rainbowButton.addEventListener("click", event => currentMode = "rainbow");
+randomButton.addEventListener("click", event => currentMode = "random");
 
 eraserButton.addEventListener("click", event => currentMode = "eraser");
 
@@ -47,27 +47,22 @@ colorPicker.addEventListener("change", event => selectedColor = event.target.val
 resetButton.addEventListener("click", event => {
     currentMode = "default";
     createGrid(16);
-    inputMessage.textContent = "Current grid size: 16 x 16 \nEnter number between 2 and 100 to change grid size. ";
-    inputBox.value = "";
+    inputMessage.textContent = "Current grid size: 16 x 16";
+    sizeSelector.value = "";
     colorPicker.value = "#FF0000";
 });
 
-inputBox.addEventListener("input", event => {
-    let size = inputBox.value;
-    if (size >= 2 && size <= 100) {
-        inputMessage.textContent = `\u00A0\nCurrent grid size: ${size} x ${size}`
-        createGrid(size);
-    } else {
-        inputMessage.textContent = "Invalid input.\nGrid size has been set to default (16x16)."
-        createGrid(16);
-    };
+sizeSelector.addEventListener("input", event => {
+    let size = sizeSelector.value;
+    inputMessage.textContent = `Current grid size: ${size} x ${size}`
+    createGrid(size);
 });
 
 function drawOnHover(event) {
     if (gridActive) {
         if (currentMode === "black") {
             event.target.style.backgroundColor = "black";
-        } else if (currentMode === "rainbow") {
+        } else if (currentMode === "random") {
             const red = Math.floor(Math.random() * 256);
             const blue = Math.floor(Math.random() * 256);
             const green = Math.floor(Math.random() * 256);
@@ -84,7 +79,7 @@ function drawOnHover(event) {
 function drawOnClick(event) {
     if (currentMode === "black") {
         event.target.style.backgroundColor = "black";
-    } else if (currentMode === "rainbow") {
+    } else if (currentMode === "random") {
         const red = Math.floor(Math.random() * 256);
         const blue = Math.floor(Math.random() * 256);
         const green = Math.floor(Math.random() * 256);
