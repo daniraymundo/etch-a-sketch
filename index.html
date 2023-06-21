@@ -10,12 +10,12 @@
     <body>
         <div class="controls">
             <div class="button-container">
-                <button class="reset">
+                <button class="black">
                     <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512">
                         <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path d="M48.5 224H40c-13.3 0-24-10.7-24-24V72c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2L98.6 96.6c87.6-86.5 228.7-86.2 315.8 1c87.5 87.5 87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3c-62.2-62.2-162.7-62.5-225.3-1L185 183c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8H48.5z"/>
+                        <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/>
                     </svg>
-                    <span class="button-text">Reset</span>
+                    <span class="button-text">Black</span>
                 </button>
                 <button class="custom">
                     <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512">
@@ -24,13 +24,6 @@
                     </svg>
                     <span class="button-text">Custom</span>
                     <input id="color-picker" type="color" value="#FF0000">
-                </button>
-                <button class="black">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512">
-                        <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/>
-                    </svg>
-                    <span class="button-text">Black</span>
                 </button>
                 <button class="random">
                     <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 640 512">
@@ -46,14 +39,24 @@
                     </svg>
                     <span class="button-text">Eraser</span>
                 </button>
+                <button class="reset">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512">
+                        <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path d="M48.5 224H40c-13.3 0-24-10.7-24-24V72c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2L98.6 96.6c87.6-86.5 228.7-86.2 315.8 1c87.5 87.5 87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3c-62.2-62.2-162.7-62.5-225.3-1L185 183c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8H48.5z"/>
+                    </svg>
+                    <span class="button-text">Reset</span>
+                </button>
+                <div class="grid-size-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512">
+                        <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path d="M448 96V224H288V96H448zm0 192V416H288V288H448zM224 224H64V96H224V224zM64 288H224V416H64V288zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"/>
+                    </svg>
+                    <span class="icon-text">Grid Size</span>
+                </div>
             </div>
             <div class="input-container">
-                <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512">
-                    <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                    <path d="M448 96V224H288V96H448zm0 192V416H288V288H448zM224 224H64V96H224V224zM64 288H224V416H64V288zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"/>
-                </svg>
-                <input id="size-selector" type="range" min="4" max="52" value="16" step ="4">
-                <p class="input-message">Grid size: 16 x 16</p>
+                <input class="grid-size" id="size-selector" type="range" min="4" max="52" value="16" step ="4">
+                <p class="input-message grid-size">Grid size: 16 x 16</p>
             </div>
         </div>
         <div class="main">
