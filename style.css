@@ -25,8 +25,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: var(--body-font);
-    font-size: 2rem;
     opacity: 0.6;
     transition: width 200ms ease;
 }
@@ -71,7 +69,7 @@ body {
 
 button {
     font-family: var(--body-font);
-    font-size: 2.5rem;
+    font-size: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,8 +92,8 @@ button:active {
 }
 
 svg {
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
     transition: var(--transition-speed);
 }
 
@@ -131,10 +129,10 @@ svg {
 
 h1 {
     padding: 0;
-    margin: 1.5rem;
+    margin: 1rem;
     text-align: center;
     font-family: var(--title-font);
-    font-size: 5rem;
+    font-size: 4.5rem;
     font-weight: 700;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
@@ -142,7 +140,7 @@ h1 {
 .instructions {
     font-family: var(--body-font);
     font-size: 1.5rem;
-    margin: 1.5rem;
+    margin: 1rem;
     padding: 0;
 }
 
