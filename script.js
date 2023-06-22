@@ -34,13 +34,25 @@ createGrid(16);
 
 gridContainer.addEventListener("click", event => gridActive = !gridActive);
 
-customButton.addEventListener("click", event => currentMode = "custom");
+customButton.addEventListener("click", event => {
+    currentMode = "custom";
+    displayActiveMode();
+});
 
-blackButton.addEventListener("click", event => currentMode = "black");
+blackButton.addEventListener("click", event => {
+    currentMode = "black";
+    displayActiveMode();
+});
 
-randomButton.addEventListener("click", event => currentMode = "random");
+randomButton.addEventListener("click", event => {
+    currentMode = "random";
+    displayActiveMode();
+});
 
-eraserButton.addEventListener("click", event => currentMode = "eraser");
+eraserButton.addEventListener("click", event => {
+    currentMode = "eraser";
+    displayActiveMode();
+});
 
 colorPicker.addEventListener("change", event => selectedColor = event.target.value);
 
@@ -74,7 +86,7 @@ function drawOnHover(event) {
         }
     }
     
-}
+};
 
 function drawOnClick(event) {
     if (currentMode === "black") {
@@ -89,4 +101,22 @@ function drawOnClick(event) {
     } else if (currentMode === "custom") {
         event.target.style.backgroundColor = selectedColor;
     }
-}
+};
+
+function displayActiveMode() {
+    const buttons = {
+        black: blackButton,
+        custom: customButton,
+        random: randomButton,
+        eraser: eraserButton
+    };
+
+    Object.keys(buttons).forEach(mode => {
+        const button = buttons[mode];
+        if (currentMode === mode) {
+            button.classList.add("active-mode");
+        } else {
+            button.classList.remove("active-mode");
+        }
+    })
+};
