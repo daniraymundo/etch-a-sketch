@@ -12,15 +12,6 @@
     --transition-speed: 300ms;
 }
 
-h1 {
-    padding:0;
-    margin: 2rem;
-    text-align: center;
-    font-family: var(--title-font);
-    font-size: 5rem;
-    font-weight: 700;  
-}
-
 body {
     padding: 0;
     margin: 0;
@@ -105,7 +96,6 @@ button:active {
 svg {
     width: 5rem;
     height: 5rem;
-    /* fill: var(--color1); */
     transition: var(--transition-speed);
 }
 
@@ -139,6 +129,22 @@ svg {
     align-items: center;
 }
 
+h1 {
+    padding: 0;
+    margin: 1.5rem;
+    text-align: center;
+    font-family: var(--title-font);
+    font-size: 5rem;
+    font-weight: 700;  
+}
+
+.instructions {
+    font-family: var(--body-font);
+    font-size: 1.5rem;
+    margin: 1.5rem;
+    padding: 0;
+}
+
 .grid-container {
     display: grid;
     width: 50rem;
@@ -149,4 +155,12 @@ svg {
 
 .grid-square {
     box-shadow: 0 0 0.75px black;
+}
+
+.grid-square:active {
+    background-color: var(--color2) !important;
+}
+
+.grid-square:hover {
+    background-color: var(--color1);
 }

@@ -32,7 +32,11 @@ function createGrid(size) {
 
 createGrid(16);
 
-gridContainer.addEventListener("click", event => gridActive = !gridActive);
+gridContainer.addEventListener("click", event => {
+    if (currentMode !== "default") {
+        gridActive = !gridActive;
+    }
+});
 
 customButton.addEventListener("click", event => {
     currentMode = "custom";
