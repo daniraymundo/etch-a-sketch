@@ -107,12 +107,17 @@ svg {
     padding: 0;
     border: 0;
     background: none;
+    cursor: pointer;
 }
 
 .input-message {
     font-size: 2rem;
     font-family: var(--body-font);
     margin: 0;
+}
+
+#size-selector {
+    cursor: pointer;
 }
 
 .active-mode {
