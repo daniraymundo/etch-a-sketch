@@ -4,6 +4,7 @@ const customButton = document.querySelector(".custom");
 const blackButton = document.querySelector(".black");
 const randomButton = document.querySelector(".random");
 const eraserButton = document.querySelector(".eraser");
+const modeButtons = document.querySelectorAll(".mode-button");
 const sizeSelector = document.querySelector("#size-selector");
 const inputMessage = document.querySelector(".input-message");
 const colorPicker = document.querySelector("#color-picker");
@@ -66,6 +67,7 @@ resetButton.addEventListener("click", event => {
     inputMessage.textContent = "Current grid size: 16 x 16";
     sizeSelector.value = "";
     colorPicker.value = "#FF0000";
+    modeButtons.forEach(button => button.classList.remove("active-mode"));
 });
 
 sizeSelector.addEventListener("input", event => {
@@ -108,19 +110,11 @@ function drawOnClick(event) {
 };
 
 function displayActiveMode() {
-    const buttons = {
-        black: blackButton,
-        custom: customButton,
-        random: randomButton,
-        eraser: eraserButton
-    };
-
-    Object.keys(buttons).forEach(mode => {
-        const button = buttons[mode];
-        if (currentMode === mode) {
+    modeButtons.forEach(button => {
+        if (button.classList.contains(currentMode)) {
             button.classList.add("active-mode");
         } else {
             button.classList.remove("active-mode");
-        }
-    })
+        };
+    });
 };
