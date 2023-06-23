@@ -1,6 +1,8 @@
 # Etch-a-Sketch
 A simple pixel art drawing tool built using HTML, CSS, and JavaScript as part of The Odin Project's [curriculum](https://www.theodinproject.com/courses/foundations/lessons/etch-a-sketch-project).
+
 [Live preview] (https://daniraymundo.github.io/etch-a-sketch/)
+
 Currently not optimized for mobile or touchscreen.
 
 ## Functionality
