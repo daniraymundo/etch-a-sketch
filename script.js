@@ -1,9 +1,5 @@
 const gridContainer = document.querySelector(".grid-container");
 const resetButton = document.querySelector(".reset");
-const customButton = document.querySelector(".custom");
-const blackButton = document.querySelector(".black");
-const randomButton = document.querySelector(".random");
-const eraserButton = document.querySelector(".eraser");
 const modeButtons = document.querySelectorAll(".mode-button");
 const sizeSelector = document.querySelector("#size-selector");
 const inputMessage = document.querySelector(".input-message");
@@ -39,24 +35,11 @@ gridContainer.addEventListener("click", event => {
     }
 });
 
-customButton.addEventListener("click", event => {
-    currentMode = "custom";
-    displayActiveMode();
-});
-
-blackButton.addEventListener("click", event => {
-    currentMode = "black";
-    displayActiveMode();
-});
-
-randomButton.addEventListener("click", event => {
-    currentMode = "random";
-    displayActiveMode();
-});
-
-eraserButton.addEventListener("click", event => {
-    currentMode = "eraser";
-    displayActiveMode();
+modeButtons.forEach(button => {
+    button.addEventListener("click", event => {
+        currentMode = button.classList[1];
+        displayActiveMode();
+    });
 });
 
 colorPicker.addEventListener("change", event => selectedColor = event.target.value);
